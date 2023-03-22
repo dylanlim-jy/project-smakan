@@ -1,4 +1,5 @@
 {% extends 'polls/base.html' %}
+{% load static %}
 
 {% block title %}
 
@@ -8,6 +9,13 @@ Let's-makan together!
 
 {% block content %}
 
-<h1>Hello from the new base!</h1>
+<div>
+    <h1>Test Django from Render</h1>
+
+    If you're seeing this - great job! You did it man!
+</div>
+<div>
+    <img src="{% static 'polls/catok.jpeg' %}" alt="Cat Ok Meme">
+</div>
 
 {% endblock content %}

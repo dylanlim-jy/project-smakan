@@ -1,21 +1,19 @@
-{% extends 'polls/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
-{% block title %}
-
-Let's-makan together!
-
-{% endblock title %}
+{% block title %}Let's-makan together!{% endblock title %}
 
 {% block content %}
+<div class="navbar bg-base-100">
+    <a class="btn btn-ghost normal-case text-xl">smakan</a>
+  </div>
+<div class="flex-col">
+    <h1 class="text-4xl">Test Django + Tailwind from Render</h1>
 
-<div>
-    <h1>Test Django from Render</h1>
-
-    If you're seeing this - great job! You did it man!
+    <p class="italic">If you're seeing this - great job! You did the thing!</p>
+    <div class="p-3 bg-yellow-50 rounded-md max-w-sm">
+        <img src="{% static 'polls/catok.jpeg' %}" alt="Cat Ok Meme">
+    </div>
+    <button class="btn btn-primary">Does nothing</button>
 </div>
-<div>
-    <img src="{% static 'polls/catok.jpeg' %}" alt="Cat Ok Meme">
-</div>
-
 {% endblock content %}

@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', default='1234')
+SECRET_KEY = os.environ.get('SECRET_KEY', default='Xj99yReBGVJhhvfnFuUHksukvCpvj9ZhUYDhGdHJCnhyCDMSve8KMsD8ErwRwPptRbNE9gAmaSYeHquzWrjVT')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # True (debug) if not hosted on Render
@@ -160,3 +160,14 @@ if not DEBUG:
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+if not DEBUG:
+    # HTTPS settings
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_SSL_REDIRECT = True
+
+    # HSTS settings
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_PRELOAD = True
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True

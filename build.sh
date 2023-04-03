@@ -5,7 +5,6 @@ set -o errexit
 pwd
 which npm
 
-npm install daisyui
 npm install --prefix ./theme/static_src
 
 python -m pip install --upgrade pip

@@ -5,7 +5,11 @@ set -o errexit
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 
-python manage.py collectstatic --clear --no-input
+pwd
+ls
+
+rm -rf staticfiles
+python manage.py collectstatic --no-input
 python manage.py migrate
 
 if [[ $CREATE_SUPERUSER ]];

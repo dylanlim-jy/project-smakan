@@ -25,7 +25,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='Xj99yReBGVJhhvfnFuUHksukvCpvj
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # True (debug) if not hosted on Render
-DEBUG = 'RENDER' not in os.environ
+# DEBUG = 'RENDER' not in os.environ
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -84,24 +85,24 @@ WSGI_APPLICATION = 'smakan.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'smakan_dev',
-            'USER': 'dylan',
-            'PASSWORD': 'dylan',
-            'HOST': '127.0.0.1',
-            'PORT': '5432',
-        }
-        }
-else:
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=os.environ.get('DATABASE_URL'),
-            conn_max_age=600
-        )
-    }
+# if DEBUG:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql',
+#             'NAME': 'smakan_dev',
+#             'USER': 'dylan',
+#             'PASSWORD': 'dylan',
+#             'HOST': '127.0.0.1',
+#             'PORT': '5432',
+#         }
+#         }
+# else:
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600
+    )
+}
 
 
 
@@ -151,23 +152,23 @@ INTERNAL_IPS = [
 ]
 
 # Following settings only make sense on production and may break development environments.
-if not DEBUG:    
+# if not DEBUG:    
     # Turn on WhiteNoise storage backend that takes care of compressing static files
     # and creating unique names for each version so they can safely be cached forever.
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-if not DEBUG:
+# if not DEBUG:
     # HTTPS settings
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
-    SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
 
-    # HSTS settings
-    SECURE_HSTS_SECONDS = 31536000
-    SECURE_HSTS_PRELOAD = True
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# HSTS settings
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True

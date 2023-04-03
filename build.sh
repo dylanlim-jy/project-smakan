@@ -2,13 +2,15 @@
 # exit on error
 set -o errexit
 
+pwd
+which npm
+
+npm install -D tailwindcss postcss autoprefixer
+
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 
-pwd
-ls
-
-rm -rf staticfiles
+python manage.py tailwind build
 python manage.py collectstatic --no-input
 python manage.py migrate
 

@@ -5,7 +5,7 @@ set -o errexit
 pwd
 which npm
 
-npm install -D tailwindcss postcss autoprefixer rimraf
+npm install -D tailwindcss postcss autoprefixer
 
 python -m pip install --upgrade pip
 pip install -r requirements.txt

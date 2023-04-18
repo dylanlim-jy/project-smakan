@@ -1,7 +1,8 @@
 {% load static tailwind_tags %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="lofi">
 	<head>
+	<link rel="shortcut icon" href="{% static 'favicon/favicon.png' %}"/>
     <title>{% block title %}{% endblock title %} | SMAKAN</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,14 +10,48 @@
 		{% tailwind_css %}
 	</head>
 
-	<body class="bg-gray-50 font-serif leading-normal tracking-normal">
-		<div class="navbar bg-base-100">
-			<a class="btn btn-ghost normal-case text-xl">smakan</a>
-		  </div>
-		<div class="container mx-auto">
-			<section class="flex items-center justify-center h-screen">
+	<body>
+		<div class="drawer">
+			<input id="my-drawer-4" type="checkbox" class="drawer-toggle"/>
+			<div class="drawer-content flex flex-col">
+				<!-- Navbar -->
+				<div class="w-full navbar primary-content justify-around py-10 lg:py-5 px-20">
+					<div class="flex-1 px-2 mx-2 text-xl font-bold">🍲 smakan</div>
+					<div>
+						<div class="hidden lg:block">
+							<ul class="menu menu-horizontal">
+								<!-- Navbar menu content here -->
+								<li><a>Suggest</a></li>
+								<li><a>Places</a></li>
+								<li><a>About</a></li>
+							</ul>
+						</div>
+						<button class="btn mx-2">Register</button>
+						<div class="flex-none lg:hidden">
+							<label for="my-drawer-4" class="btn btn-square btn-ghost">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+									class="inline-block w-6 h-6 stroke-current">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+										d="M4 6h16M4 12h16M4 18h16"></path>
+								</svg>
+							</label>
+						</div>
+					</div>
+				</div>
+				<!-- Content here -->
 				{% block content %}{% endblock content %}
-			</section>
+			</div>
+			<div class="drawer-side">
+				<label for="my-drawer-4" class="drawer-overlay"></label>
+				<ul class="menu p-8 w-80 bg-base-100">
+					<!-- Sidebar content here -->
+					<li><a>Suggest</a></li>
+					<li><a>Places</a></li>
+					<li><a>About</a></li>
+					<li class="mt-auto italic"><a>Made with 🖤  - Dylan	</a></li>
+				</ul>				
+			</div>
 		</div>
+		
 	</body>
 </html>

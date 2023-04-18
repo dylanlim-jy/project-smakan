@@ -1,16 +1,46 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}🍱 Let's-makan together!{% endblock title %}
+{% block title %}Let's-makan together!{% endblock title %}
 
 {% block content %}
-<div class="flex-col">
-    <h1 class="text-4xl">Test Django + Tailwind from Render</h1>
-
-    <p class="italic">If you're seeing this - great job! You did the thing!</p>
-    <div class="p-3 bg-yellow-50 rounded-md max-w-sm">
-        <img src="{% static 'polls/catok.jpeg' %}" alt="Cat Ok Meme">
+<section class="mx-auto px-20 max-w-5xl py-20">
+  <h1 class="text-5xl font-bold text-center mb-8">Let's smakan together!</h1>
+  <p class="text-lg text-center mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  <div class="mx-auto max-w-md mb-12">
+    <form class="flex items-center border-2 border-gray-300 rounded-md px-4 py-2">
+      <input type="text" placeholder="Search..." class="input input-ghost w-full"/>
+      <button type="submit" class="btn btn-primary">Go</button>
+    </form>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="card shadow-lg">
+      <div class="card-body">
+        <h2 class="card-title">Eatery 1</h2>
+        <p class="text-gray-600 mb-4">If a dog chews shoes whose shoes does he choose?</p>
+        <div class="card-actions">
+          <button class="btn btn-sm btn-outline">Go!</button>
+        </div>
+      </div>
     </div>
-    <button class="btn btn-primary">Does nothing</button>
-</div>
+    <div class="card shadow-lg">
+      <div class="card-body">
+        <h2 class="card-title">Eatery 2</h2>
+        <p class="text-gray-600 mb-4">If a dog chews shoes whose shoes does he choose?</p>
+        <div class="card-actions">
+          <button class="btn btn-sm btn-outline">Go!</button>
+        </div>
+      </div>
+    </div>
+    <div class="card bg-base-100 shadow-lg">
+      <div class="card-body">
+        <h2 class="card-title">Eatery 3</h2>
+        <p class="text-gray-600 mb-4">If a dog chews shoes whose shoes does he choose?</p>
+        <div class="card-actions">
+          <button class="btn btn-sm btn-outline">Go!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock content %}

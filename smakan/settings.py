@@ -124,6 +124,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'polls.User'
+AUTHENTICATION_BACKENDS = [
+    'polls.backends.PinBackend',
+    'django.contrib.auth.backends.ModelBackend'
+]
+LOGIN_REDIRECT_URL = '/'
+
+LOGIN_URL = '/login'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/

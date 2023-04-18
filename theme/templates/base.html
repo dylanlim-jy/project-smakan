@@ -16,17 +16,24 @@
 			<div class="drawer-content flex flex-col">
 				<!-- Navbar -->
 				<div class="w-full navbar primary-content justify-around py-10 lg:py-5 px-20">
-					<div class="flex-1 px-2 mx-2 text-xl font-bold">🍲 smakan</div>
+					<div class="flex-1 px-2 mx-2 text-xl font-bold"><a href="{% url 'polls:index' %}">🍲 smakan</a></div>
 					<div>
 						<div class="hidden lg:block">
 							<ul class="menu menu-horizontal">
 								<!-- Navbar menu content here -->
-								<li><a>Suggest</a></li>
-								<li><a>Places</a></li>
-								<li><a>About</a></li>
+								<li><a href="{% url 'polls:suggest' %}">Suggest</a></li>
+								<li><a href="{% url 'polls:places' %}">Places</a></li>
+								<li><a href="{% url 'polls:about' %}">About</a></li>
+								{% if user.is_authenticated %}
+								<li><a>Profile</a></li>
+								{% endif %}
 							</ul>
 						</div>
-						<button class="btn mx-2">Register</button>
+						{% if user.is_authenticated %}
+						<button class="btn btn-outline mx-2"><a href="{% url 'polls:logout' %}">Logout</a></button>
+						{% else %}
+						<button class="btn mx-2"><a href="{% url 'polls:login' %}">Login</a></button>
+						{% endif %}
 						<div class="flex-none lg:hidden">
 							<label for="my-drawer-4" class="btn btn-square btn-ghost">
 								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -45,10 +52,16 @@
 				<label for="my-drawer-4" class="drawer-overlay"></label>
 				<ul class="menu p-8 w-80 bg-base-100">
 					<!-- Sidebar content here -->
-					<li><a>Suggest</a></li>
-					<li><a>Places</a></li>
-					<li><a>About</a></li>
-					<li class="mt-auto italic"><a>Made with 🖤  - Dylan	</a></li>
+					<li><a href="{% url 'polls:suggest' %}">Suggest</a></li>
+					<li><a href="{% url 'polls:places' %}">Places</a></li>
+					<li><a href="{% url 'polls:about' %}">About</a></li>
+					{% if user.is_authenticated %}
+					<li><a>Profile</a></li>
+					<li class="mt-auto"><a href="{% url 'polls:logout' %}">Logout</a></li>
+					<li class="italic"><a>Made with 🖤  - Dylan</a></li>
+					{% else %}
+					<li class="mt-auto italic"><a>Made with 🖤  - Dylan</a></li>
+					{% endif %}
 				</ul>				
 			</div>
 		</div>

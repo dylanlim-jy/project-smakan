@@ -4,7 +4,26 @@
 {% block title %}Login{% endblock title %}
 
 {% block content %}
-<section class="mx-auto px-20 max-w-5xl py-20">
-  <h1 class="text-5xl font-bold text-center mb-8">This is the login page</h1>
+<section class="mx-auto my-10 p-20 max-w-xl">
+  <h1 class="text-5xl font-bold text-center mb-4">Log in to dine in</h1>
+  <p class="italic text-center text-sm text-gray-600 mb-8">or out, don't let me tell you what you can or can't do</p>
+  <form method="post" class="flex flex-col">
+    {% csrf_token %}
+    <div class="text-gray-600 text-sm mb-0.5">
+      {{ form.username.label_tag }}
+    </div>
+    {{ form.username }}
+    <div class="text-gray-600 text-sm mb-0.5 mt-2">
+      {{ form.password.label_tag }}
+    </div>
+    {{ form.password }}
+    <input class="btn mt-2" type="submit" value="Login">
+    <div class="text-gray-600 text-sm mb-0.5 mt-2">
+      Don't have an account yet? <a class="underline" href="{% url 'polls:register' %}">Register now</a>.
+    </div>
+    <div class="text-gray-600 text-sm mb-2 mt-0.5">
+      Forgot your password? Haiyaaa password reset link not done yet le.
+    </div>
+</form>
 </section>
 {% endblock content %}

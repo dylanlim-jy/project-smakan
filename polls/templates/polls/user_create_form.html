@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Register{% endblock title %}
+
+{% block content %}
+<section class="mx-auto my-10 p-20 max-w-xl">
+  <h1 class="text-5xl font-bold text-center mb-8">Register now, makan later</h1>
+  <form method="post" class="flex flex-col">
+    {% csrf_token %}
+    <div class="text-gray-600 text-sm mb-0.5">
+      {{ form.username.label_tag }}
+    </div>
+    {{ form.username }}
+    <div class="text-gray-600 text-sm mb-0.5 mt-2">
+      {{ form.email.label_tag }}
+    </div>
+    {{ form.email }}
+    <div class="text-gray-600 text-sm mb-0.5 mt-2">
+      {{ form.pin.label_tag }}
+    </div>
+    {{ form.pin }}
+    <input class="btn mt-2" type="submit" value="Register">
+    <div class="text-gray-600 text-sm mb-0.5 mt-2">
+      Got an account already? <a class="underline" href="{% url 'polls:login' %}">Login instead</a>.
+    </div>
+</form>
+</section>
+{% endblock content %}

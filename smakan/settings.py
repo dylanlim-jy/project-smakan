@@ -125,10 +125,12 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = 'polls.User'
+
 AUTHENTICATION_BACKENDS = [
     'polls.backends.PinBackend',
-    'django.contrib.auth.backends.ModelBackend'
-]
+    'django.contrib.auth.backends.ModelBackend',
+    ]
+
 LOGIN_REDIRECT_URL = '/'
 
 LOGIN_URL = '/login'

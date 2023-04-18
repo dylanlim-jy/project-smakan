@@ -1,20 +1,24 @@
-from django import forms
-from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
+from django.forms import Form
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordResetForm, SetPasswordForm
+from .models import User
 
-class RegisterForm(forms.Form):
+# possibly don't need this
+class RegisterForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = ('email', 'username', 'pin')
+
+class LoginForm(Form):
     pass
 
-class LoginForm(forms.Form):
+class CreatePlaceForm(Form):
     pass
 
-class CreatePlaceForm(forms.Form):
+class UpdatePlaceForm(Form):
     pass
 
-class UpdatePlaceForm(forms.Form):
+class CreateSuggestionForm(Form):
     pass
 
-class CreateSuggestionForm(forms.Form):
-    pass
-
-class UpdateSuggestionForm(forms.Form):
+class UpdateSuggestionForm(Form):
     pass

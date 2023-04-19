@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import RegexValidator
 
 class UserManager(BaseUserManager):
     def _create_user(self, email, username, pin, **kwargs):
@@ -32,8 +32,9 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(blank=False, default='', unique=True)
-    username = models.CharField(max_length=255, blank=False, default='', unique=True)
-    pin = models.IntegerField(blank=False, validators=[MinValueValidator(1000), MaxValueValidator(9999)])
+    username = models.CharField(max_length=255, blank=False, default='')
+    pin_regex = RegexValidator(regex=r"^[0-9]{4,4}$", message="Please enter a 4-digit pin")
+    pin = models.IntegerField(blank=False, validators=[pin_regex])
 
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)

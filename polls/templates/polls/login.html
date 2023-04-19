@@ -10,13 +10,13 @@
   <form method="post" class="flex flex-col">
     {% csrf_token %}
     <div class="text-gray-600 text-sm mb-0.5">
-      {{ form.username.label_tag }}
+      {{ form.email.label_tag }}
     </div>
-    {{ form.username }}
+    {{ form.email }}
     <div class="text-gray-600 text-sm mb-0.5 mt-2">
-      {{ form.password.label_tag }}
+      {{ form.pin.label_tag }}
     </div>
-    {{ form.password }}
+    {{ form.pin }}
     <input class="btn mt-2" type="submit" value="Login">
     <div class="text-gray-600 text-sm mb-0.5 mt-2">
       Don't have an account yet? <a class="underline" href="{% url 'polls:register' %}">Register now</a>.
